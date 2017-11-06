@@ -4,6 +4,14 @@ find / -name "*.log" -type f -size +1000M -exec ls -lh {} \; 2> /dev/null | awk 
 #Find any files bigger than *
 find / -type f -size +1000M -exec ls -lh {} \; 2> /dev/null | awk '{ print $NF ": " $5 }' | sort -nrk 2
 
-Delete all *.log files older than 183 days
+#Delete all *.log files older than 183 days
 find / -name "*.log" -mtime +183 -exec rm -rf "{}" \;
 
+#Search in ldap   (configuration needed)
+ldapsearch -h server.com -x -b "OU=LinuxGroups,OU=Groups,OU=whatever,OU=whatever,DC=server,DC=com" -D "CN=serviceuser,OU=serviceusers,OU=other.OU=whatever,DC=server,DC=com" 
+
+#symlink /bin to /bin.backup
+/bin.backup/ln -s /bin.backup /bin 
+
+#AUTHENTICATING FOR org.freedesktop.policykit.exec
+pkexec visudo -f /etc/sudoers.d/
