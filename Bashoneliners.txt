@@ -1,7 +1,7 @@
-#Find files bigger than ends with .log 
+#Find files bigger than * and ends with .log 
 find / -name "*.log" -type f -size +1000M -exec ls -lh {} \; 2> /dev/null | awk '{ print $NF ": " $5 }' | sort -nrk 2,2
 
-#Find any files bigger than
+#Find any files bigger than *
 find / -type f -size +1000M -exec ls -lh {} \; 2> /dev/null | awk '{ print $NF ": " $5 }' | sort -nrk 2
 
 Delete all *.log files older than 183 days
