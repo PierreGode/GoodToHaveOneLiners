@@ -14,8 +14,8 @@ ________________________________________________________________________________
 ldapsearch -h server.com -x -b "OU=LinuxGroups,OU=Groups,OU=whatever,OU=whatever,DC=server,DC=com" -D "CN=serviceuser,OU=serviceusers,OU=other.OU=whatever,DC=server,DC=com" 
 __________________________________________________________________________________________________________________________________________
 
-#symlink /bin to /bin.backup
-/bin.backup/ln -s /bin.backup /bin 
+#symlink
+ln -s /bin.backup /bin 
 __________________________________________________________________________________________________________________________________________
 
 #AUTHENTICATING FOR org.freedesktop.policykit.exec
