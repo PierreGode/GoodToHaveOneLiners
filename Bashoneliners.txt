@@ -1,20 +1,26 @@
 #Find files bigger than * and ends with .log 
 find / -name "*.log" -type f -size +1000M -exec ls -lh {} \; 2> /dev/null | awk '{ print $NF ": " $5 }' | sort -nrk 2,2
+__________________________________________________________________________________________________________________________________________
 
 #Find any files bigger than *
 find / -type f -size +1000M -exec ls -lh {} \; 2> /dev/null | awk '{ print $NF ": " $5 }' | sort -nrk 2
+__________________________________________________________________________________________________________________________________________
 
 #Delete all *.log files older than 183 days
 find / -name "*.log" -mtime +183 -exec rm -rf "{}" \;
+__________________________________________________________________________________________________________________________________________
 
 #Search in ldap   (configuration needed)
 ldapsearch -h server.com -x -b "OU=LinuxGroups,OU=Groups,OU=whatever,OU=whatever,DC=server,DC=com" -D "CN=serviceuser,OU=serviceusers,OU=other.OU=whatever,DC=server,DC=com" 
+__________________________________________________________________________________________________________________________________________
 
 #symlink /bin to /bin.backup
 /bin.backup/ln -s /bin.backup /bin 
+__________________________________________________________________________________________________________________________________________
 
 #AUTHENTICATING FOR org.freedesktop.policykit.exec
 pkexec visudo -f /etc/sudoers.d/
+__________________________________________________________________________________________________________________________________________
 
 #log CPU services that is running at 80% if CPU
 top -b -n 1 | awk '$10 > 0.1 {print ;}' | sudo tee -a /var/log/cpu.log
