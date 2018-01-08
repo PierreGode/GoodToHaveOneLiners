@@ -34,3 +34,6 @@ done
 
 #same as grep but with python
 cat haha.txt | python -c "import re,sys;map(sys.stdout.write,(l for l in sys.stdin if re.search(sys.argv[1],l)))" "d"
+
+#Lists the size contents(including folders) in a user-friendly format
+du -sh * | sort -h
