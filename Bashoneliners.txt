@@ -1,3 +1,4 @@
+#Pierre#
 #Find files bigger than * and ends with .log 
 find / -name "*.log" -type f -size +1000M -exec ls -lh {} \; 2> /dev/null | awk '{ print $NF ": " $5 }' | sort -nrk 2,2
 __________________________________________________________________________________________________________________________________________
